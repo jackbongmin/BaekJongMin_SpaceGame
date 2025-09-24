@@ -57,11 +57,11 @@ void Player::IncreaseEnemyAffinity(Enemy& enemy, int BaseValue)
         enemy.GetName().c_str(), finalValue, enemy.GetAffinity());
 }
 
-void Player::AddWeapon(WeaponType weapon)
+void Player::AddWeapon(WeaponType Weapon)
 {
-    if (!Weapons.contains(weapon))
+    if (!Weapons.contains(Weapon))
     {
-        Weapons.insert(weapon);
+        Weapons.insert(Weapon);
         printf("새로운 무기를 획득했습니다! (현재 무기 수: %d)\n", (int)Weapons.size());
     }
 }

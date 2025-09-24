@@ -4,9 +4,9 @@ class Robot : public Enemy
 {
 public:
 	Robot()
-		:Enemy("¿Ü°è ·Îº¿", 50, 10) {}
+		:Enemy("¿Ü°è ·Îº¿", 50, 10, WeaponType::Hit, WeaponType::EMP) {}
 	Robot(const char* InName)
-		:Enemy(InName, 50, 10) {}
+		:Enemy(InName, 50, 10, WeaponType::Hit, WeaponType::EMP) {}
 
 };
 

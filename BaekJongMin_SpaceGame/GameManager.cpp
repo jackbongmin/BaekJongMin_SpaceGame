@@ -359,22 +359,6 @@ void GameManager::MeetEnemy_BattleEvent(Player& player, Enemy* pEnemy)
 			printf("상대에게 패배하였습니다...\n");
 		}
 	}
-
-
-
-		//player.ApplyAttack(pEnemy);
-		//if (!pEnemy->IsAlive())
-		//{
-		//	printf("상대를 물리쳤습니다.\n");
-		//	break;
-		//}
-		//pEnemy->ApplyAttack(&player);
-		//if (!player.IsAlive())
-		//{
-		//	printf("상대에게 패배하였습니다.\n");
-		//}
-	
-
 }
 
 int GameManager::CalculateWeaponDamage(Player& player, Enemy& enemy, WeaponType weapon)

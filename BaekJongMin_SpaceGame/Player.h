@@ -2,6 +2,9 @@
 #include<set>
 #include "Actor.h"
 #include "Enemy.h"
+#include "Weapon.h"
+
+
 
 
 class Player : public Actor
@@ -28,7 +31,7 @@ public:
 		return Weapons.contains(weapon);
 	}
 
-	void AddWeapon(WeaponType weapon);
+	void AddWeapon(WeaponType Weapon);
 
 	int WeaponCount() const { return (int)Weapons.size(); }
 
@@ -40,11 +43,4 @@ private:
 	int AlienBook = 0;
 
 	std::set<WeaponType> Weapons;
-};
-
-enum class WeaponType
-{
-	Fire,
-	EMP,
-	Hit
 };

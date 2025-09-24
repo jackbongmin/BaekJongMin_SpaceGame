@@ -146,10 +146,10 @@ void GameManager::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 
 	if (FinalAffinity < 50) 
 	{
-		Sleep(3000);
+		Sleep(2000);
 		printf("%s가 적대적으로 변했습니다! 전투 돌입!\n", pEnemy->GetName().c_str());
+		Sleep(2000);
 		MeetEnemy_BattleEvent(player, pEnemy);
-		Sleep(1000);
 	}
 	else if (FinalAffinity < 60) 
 	{

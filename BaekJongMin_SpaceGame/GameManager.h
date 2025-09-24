@@ -10,6 +10,7 @@ class GameManager
 {
 public:
 
+	void Intro();
 	void MainRoot();
 	void DailyAction();
 	void Explore();

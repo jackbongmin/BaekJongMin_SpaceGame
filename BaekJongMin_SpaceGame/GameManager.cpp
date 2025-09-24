@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <fstream>
 #include <random>
 #include <Windows.h>
@@ -13,6 +13,46 @@
 #include "JellyFish.h"
 #include "Robot.h"
 #include "Meet.h"
+/*
+														 â–ˆâ–ˆâ–ˆâ•—   â–ˆâ–ˆâ•—â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—â–ˆâ–ˆâ•—  â–ˆâ–ˆâ•—â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—    â–ˆâ–ˆâ•—   â–ˆâ–ˆâ•—â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—
+														 â–ˆâ–ˆâ–ˆâ–ˆâ•—  â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•”â•â•â•â•â• â–ˆâ–ˆâ•—â–ˆâ–ˆâ•— â–ˆâ–ˆâ•”â•â•â–ˆâ–ˆâ•—â–ˆâ–ˆâ•”â•â•â–ˆâ–ˆâ•—â–ˆâ–ˆâ•”â•â•â•â•â•â–ˆâ–ˆâ•”â•â•â•â•â•    â–ˆâ–ˆâ•‘   â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•”â•â•â•â•â•
+														 â–ˆâ–ˆâ•”â–ˆâ–ˆâ•— â–ˆâ–ˆâ•‘â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—    â–ˆâ–ˆâ–ˆâ•‘  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•”â•â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•‘â–ˆâ–ˆâ•‘     â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—      â–ˆâ–ˆâ•‘   â–ˆâ–ˆâ•‘â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—
+														 â–ˆâ–ˆâ•‘â•šâ–ˆâ–ˆâ•—â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•”â•â•â•   â–ˆâ–ˆâ•â–ˆâ–ˆâ•‘ â–ˆâ–ˆâ•”â•â•â•â• â–ˆâ–ˆâ•”â•â•â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•‘     â–ˆâ–ˆâ•”â•â•â•      â–ˆâ–ˆâ•‘   â–ˆâ–ˆâ•‘ â•šâ•â•â•â–ˆâ–ˆâ•‘
+														 â–ˆâ–ˆâ•‘ â•šâ–ˆâ–ˆâ–ˆâ–ˆâ•‘â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—â–ˆâ–ˆâ•‘  â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•‘     â–ˆâ–ˆâ•‘  â–ˆâ–ˆâ•‘â•šâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—     â•šâ–ˆâ–ˆâ–ˆâ–ˆâ•”â• â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•‘
+														 â•šâ•â•  â•šâ•â•â•â•â•šâ•â•â•â•â•â•â•â•šâ•â•  â•šâ•â•â•šâ•â•     â•šâ•â•  â•šâ•â• â•šâ•â•â•â•â•â•â•šâ•â•â•â•â•â•â•      â•šâ•â•â•â•  â•šâ•â•â•â•â•â•â•
+*/
+void GameManager::Intro()
+{
+	printf("\n                                                            /^\\                      \n");
+	printf("                                                           /   \\                     \n");
+	printf("                                                          /  o  \\                    \n");
+	printf("                                                         /   o   \\                   \n");
+	printf("                                                        /    o    \\                  \n");
+	printf("                                                       |-_________-|                  \n");
+	printf("                                                       |           |                  \n");
+	printf("                      __                               |   __      |                  \n");
+	printf("                     (__)                             /|  [  ]     |\\                \n");
+	printf("                      ||                             / |  [  ]     | \\               \n");
+	printf("                   .------.                         /__|  [__]     |__\\              \n");
+	printf("                .-'        `-.                          \\         /                  \n");
+	printf("              .'_     _     _ `.                         \\       /                   \n");
+	printf("             / [_]   [ ]   [_] \\                         /=======\\                   \n");
+	printf("          __|  [_]   [_]   [_]  |__                     /=========\\                  \n");
+	printf("        /    \\                 /     \\                 /===========\\                 \n");
+	printf("       I      `. ._________. .'       I                  ||  ||  ||                   \n");
+	printf("       \\                             /                   VV  VV  VV                   \n");
+	printf("        '-'-----------------------'-'                   vvv  vv  vvv                  \n");
+	printf("           I_I       I_I       I_I                     vvvv  vv  vvvv                 \n\n");
+
+	printf(" _   _  ______  __   __  _____             _____  ______      _    _    _____        \n");
+	printf("| \\ | ||  ____| \\ \\ / / |  __ \\    /\\     / ____||  ____|    | |  | |  / ____|  \n");
+	printf("|  \\| || |__     \\ V /  | |__) |  /  \\   | |     | |__       | |  | | | (___      \n");
+	printf("| . ` ||  __|     > <   | |___/  / /\\ \\  | |     |  __|      | |  | |  \\___ \\    \n");
+	printf("| |\\  || |____   / . \\  | |     / ____ \\ | |___  | |____     | |__| |  ____) |    \n");
+	printf("|_| \\_||______| /_/ \\_\\ |_|    /_/    \\_\\ \\_____||______|     \\____/  |_____/ \n\n");
+	
+	printf("==============================================================================\n\n");
+}
 
 void GameManager::MainRoot()
 {
@@ -26,7 +66,7 @@ void GameManager::MainRoot()
 
 		Day++;
 	}
-	printf("°ÔÀÓ Á¾·á! 10ÀÏÀÌ Áö³µ½À´Ï´Ù.\n");
+	printf("ê²Œì„ ì¢…ë£Œ! 10ì¼ì´ ì§€ë‚¬ìŠµë‹ˆë‹¤.\n");
 }
 
 void GameManager::DailyAction()
@@ -37,8 +77,8 @@ void GameManager::DailyAction()
 	{
 
 		printf("AP: %d\n", ActionPoint);
-		printf("¹«¾ùÀ» ÇÏ½Ã°Ú½À´Ï±î?\n");
-		printf("[1.Å½Çè 2.ÈŞ½Ä 3.¿¬±¸]\n");
+		printf("ë¬´ì—‡ì„ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\n");
+		printf("[1.íƒí—˜ 2.íœ´ì‹ 3.ì—°êµ¬]\n");
 
 		int MaxChoice = 3;
 
@@ -52,7 +92,7 @@ void GameManager::DailyAction()
 
 		if (Choice < 1 || Choice > MaxChoice)
 		{
-			printf("Àß¸øÀÔ·ÂÇÏ¼Ì½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇÏ½Ã¿À.\n");
+			printf("ì˜ëª»ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•˜ì‹œì˜¤.\n");
 			continue;
 		}
 		switch (Choice)
@@ -66,7 +106,7 @@ void GameManager::DailyAction()
 			}
 			else
 			{
-				printf("¿À´ÃÀº ÀÌ¹Ì Å½ÇèÇß½À´Ï´Ù!\n");
+				printf("ì˜¤ëŠ˜ì€ ì´ë¯¸ íƒí—˜í–ˆìŠµë‹ˆë‹¤!\n");
 			}
 			break;
 		case 2:
@@ -76,7 +116,7 @@ void GameManager::DailyAction()
 			}
 			else
 			{
-				printf("¿À´ÃÀº ÀÌ¹Ì ÈŞ½ÄÇß½À´Ï´Ù!\n");
+				printf("ì˜¤ëŠ˜ì€ ì´ë¯¸ íœ´ì‹í–ˆìŠµë‹ˆë‹¤!\n");
 			}
 			break;
 		case 3:
@@ -87,15 +127,15 @@ void GameManager::DailyAction()
 			}
 			else
 			{
-				printf("¿À´ÃÀº ÀÌ¹Ì ¿¬±¸Çß½À´Ï´Ù!\n");
+				printf("ì˜¤ëŠ˜ì€ ì´ë¯¸ ì—°êµ¬í–ˆìŠµë‹ˆë‹¤!\n");
 			}
 			break;
 		case 4:
-			printf("´ÙÀ½ ³¯·Î ³Ñ¾î°©´Ï´Ù.\n");
+			printf("ë‹¤ìŒ ë‚ ë¡œ ë„˜ì–´ê°‘ë‹ˆë‹¤.\n");
 			return;
 		}
 
-		printf("Çàµ¿·ÂÀÌ ´Ù ¶³¾îÁ³½À´Ï´Ù. ÀÚµ¿À¸·Î ´ÙÀ½ ³¯·Î ³Ñ¾î°©´Ï´Ù.\n");
+		printf("í–‰ë™ë ¥ì´ ë‹¤ ë–¨ì–´ì¡ŒìŠµë‹ˆë‹¤. ìë™ìœ¼ë¡œ ë‹¤ìŒ ë‚ ë¡œ ë„˜ì–´ê°‘ë‹ˆë‹¤.\n");
 	}
 }
 
@@ -110,7 +150,7 @@ void GameManager::Rest()
 
 void GameManager::Research()
 {
-	printf("¿¬±¸¸¦ ½ÃÀÛÇÕ´Ï´Ù.\n");
+	printf("ì—°êµ¬ë¥¼ ì‹œì‘í•©ë‹ˆë‹¤.\n");
 
 	int i = rand() % 100;
 
@@ -118,7 +158,7 @@ void GameManager::Research()
 	{
 		if (i < 20)
 		{
-			printf("¾Æ¹« ÀÏµµ ÀÏ¾î³ªÁö ¾Ê¾Ò´Ù.");
+			printf("ì•„ë¬´ ì¼ë„ ì¼ì–´ë‚˜ì§€ ì•Šì•˜ë‹¤.");
 		}
 		else
 		{
@@ -128,7 +168,7 @@ void GameManager::Research()
 	}
 	if (i < 20)
 	{
-		printf("¾Æ¹« ÀÏµµ ÀÏ¾î³ªÁö ¾Ê¾Ò´Ù.");
+		printf("ì•„ë¬´ ì¼ë„ ì¼ì–´ë‚˜ì§€ ì•Šì•˜ë‹¤.");
 	}
 	else if (i < 60)
 	{
@@ -167,15 +207,15 @@ void GameManager::Explore_MeetEnemy()
 	{
 	case 0:
 		pEnemy = new Spider();
-		printf("°Å¹Ì ¿Ü°èÀÎÀÌ ³ªÅ¸³µ½À´Ï´Ù.\n");
+		printf("ê±°ë¯¸ ì™¸ê³„ì¸ì´ ë‚˜íƒ€ë‚¬ìŠµë‹ˆë‹¤.\n");
 		break;
 	case 1:
 		pEnemy = new JellyFish();
-		printf("ÇØÆÄ¸® ¿Ü°èÀÎÀÌ ³ªÅ¸³µ½À´Ï´Ù.\n");
+		printf("í•´íŒŒë¦¬ ì™¸ê³„ì¸ì´ ë‚˜íƒ€ë‚¬ìŠµë‹ˆë‹¤.\n");
 		break;
 	case 2:
 		pEnemy = new Robot();
-		printf("¿Ü°è ·Îº¿ÀÌ ³ªÅ¸³µ½À´Ï´Ù.\n");
+		printf("ì™¸ê³„ ë¡œë´‡ì´ ë‚˜íƒ€ë‚¬ìŠµë‹ˆë‹¤.\n");
 		break;
 	default:
 		break;
@@ -198,20 +238,20 @@ void GameManager::Explore_MeetEnemy()
 
 void GameManager::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 {
-	printf("%s¿Í ´ëÈ­¸¦ ½ÃÀÛÇÕ´Ï´Ù.\n", pEnemy->GetName().c_str());
+	printf("%sì™€ ëŒ€í™”ë¥¼ ì‹œì‘í•©ë‹ˆë‹¤.\n", pEnemy->GetName().c_str());
 
 	for (int round = 1; round <= 3; round++) 
 	{
-		printf("\n[%d¹øÂ° ´ëÈ­]\n", round);
-		printf("1. ÆòÈ­·Ó°Ô ÀÌ¾ß±âÇÑ´Ù\n");
-		printf("2. ±³¿ªÀ» Á¦¾ÈÇÑ´Ù\n");
-		printf("3. ÈûÀ» °ú½ÃÇÑ´Ù\n");
+		printf("\n[%dë²ˆì§¸ ëŒ€í™”]\n", round);
+		printf("1. í‰í™”ë¡­ê²Œ ì´ì•¼ê¸°í•œë‹¤\n");
+		printf("2. êµì—­ì„ ì œì•ˆí•œë‹¤\n");
+		printf("3. í˜ì„ ê³¼ì‹œí•œë‹¤\n");
 
 		int choice;
 		std::cin >> choice;
 
 		switch (choice) {
-		case 1: // ÆòÈ­
+		case 1: // í‰í™”
 			if (dynamic_cast<JellyFish*>(pEnemy))
 			{
 				player.IncreaseEnemyAffinity(*pEnemy, +15);
@@ -226,7 +266,7 @@ void GameManager::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 			}
 			break;
 
-		case 2: // Çù»ó
+		case 2: // í˜‘ìƒ
 			if (dynamic_cast<Robot*>(pEnemy))
 			{
 				player.IncreaseEnemyAffinity(*pEnemy, +15);
@@ -234,7 +274,7 @@ void GameManager::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 			else player.IncreaseEnemyAffinity(*pEnemy, +2);
 			break;
 
-		case 3: // ÀüÀï ¤¡¤¡
+		case 3: // ì „ìŸ ã„±ã„±
 			if (dynamic_cast<Spider*>(pEnemy))
 			{
 				player.IncreaseEnemyAffinity(*pEnemy, +15);
@@ -249,31 +289,31 @@ void GameManager::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 			}
 			break;
 		}
-		printf("ÇöÀç È£°¨µµ: %d\n", pEnemy->GetAffinity());
+		printf("í˜„ì¬ í˜¸ê°ë„: %d\n", pEnemy->GetAffinity());
 	}
 
-	// ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ ´ëÈ­ ³¡³²
+	// ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ ëŒ€í™” ëë‚¨
 
 	int FinalAffinity = pEnemy->GetAffinity();
-	printf("\nÃÖÁ¾ È£°¨µµ: %d\n", FinalAffinity);
+	printf("\nìµœì¢… í˜¸ê°ë„: %d\n", FinalAffinity);
 
 	if (FinalAffinity < 50) 
 	{
 		Sleep(2000);
-		printf("%s°¡ Àû´ëÀûÀ¸·Î º¯Çß½À´Ï´Ù! ÀüÅõ µ¹ÀÔ!\n", pEnemy->GetName().c_str());
+		printf("%sê°€ ì ëŒ€ì ìœ¼ë¡œ ë³€í–ˆìŠµë‹ˆë‹¤! ì „íˆ¬ ëŒì…!\n", pEnemy->GetName().c_str());
 		Sleep(2000);
 		MeetEnemy_BattleEvent(player, pEnemy);
 	}
 	else if (FinalAffinity < 60) 
 	{
-		printf("%s´Â °æ°èÇÏ¸ç ¹°·¯³µ½À´Ï´Ù.\n", pEnemy->GetName().c_str());
+		printf("%sëŠ” ê²½ê³„í•˜ë©° ë¬¼ëŸ¬ë‚¬ìŠµë‹ˆë‹¤.\n", pEnemy->GetName().c_str());
 		Sleep(1000);
 	}
 	else 
 	{
-		printf("%s°¡ È£°¨À» º¸¿´½À´Ï´Ù! º¸±ŞÇ°À» Áİ´Ï´Ù.\n", pEnemy->GetName().c_str());
+		printf("%sê°€ í˜¸ê°ì„ ë³´ì˜€ìŠµë‹ˆë‹¤! ë³´ê¸‰í’ˆì„ ì¤ë‹ˆë‹¤.\n", pEnemy->GetName().c_str());
 		Sleep(1000);
-		// º¸±ŞÇ° Ãß°¡ÇØ¾ßÇÔ player¿¡ ÀÚ¿ø º¸±Ş
+		// ë³´ê¸‰í’ˆ ì¶”ê°€í•´ì•¼í•¨ playerì— ìì› ë³´ê¸‰
 		// player.AddFood(1);
 		// player.AddOxygen(10);
 	}
@@ -282,29 +322,29 @@ void GameManager::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 void GameManager::MeetEnemy_BattleEvent(Player& player, Enemy* pEnemy)
 {
 
-	printf("ÀüÅõ¸¦ ½ÃÀÛÇÕ´Ï´Ù.\n");
+	printf("ì „íˆ¬ë¥¼ ì‹œì‘í•©ë‹ˆë‹¤.\n");
 
 	while (player.IsAlive() && pEnemy->IsAlive())
 	{
-		printf("ÇÃ·¹ÀÌ¾î ÅÏÀÔ´Ï´Ù. °ø°İ¹æ½ÄÀ» ¼±ÅÃÇÏ¼¼¿ä.\n");
+		printf("í”Œë ˆì´ì–´ í„´ì…ë‹ˆë‹¤. ê³µê²©ë°©ì‹ì„ ì„ íƒí•˜ì„¸ìš”.\n");
 		int Option = 1;
-		printf("%d.±âº»°ø°İ\n", Option++);
+		printf("%d.ê¸°ë³¸ê³µê²©\n", Option++);
 
 		std::vector<WeaponType> Choices;
 
 		if (player.HasWeapon(WeaponType::Fire))
 		{
-			printf("%d. Fire ¹«±â °ø°İ\n", Option++);
+			printf("%d. Fire ë¬´ê¸° ê³µê²©\n", Option++);
 			Choices.push_back(WeaponType::Fire);
 		}
 		if (player.HasWeapon(WeaponType::EMP))
 		{
-			printf("%d. EMP ¹«±â °ø°İ\n", Option++);
+			printf("%d. EMP ë¬´ê¸° ê³µê²©\n", Option++);
 			Choices.push_back(WeaponType::EMP);
 		}
 		if (player.HasWeapon(WeaponType::Hit))
 		{
-			printf("%d. Hit ¹«±â °ø°İ\n", Option++);
+			printf("%d. Hit ë¬´ê¸° ê³µê²©\n", Option++);
 			Choices.push_back(WeaponType::Hit);
 		}
 
@@ -315,11 +355,11 @@ void GameManager::MeetEnemy_BattleEvent(Player& player, Enemy* pEnemy)
 
 		if (Choice == 1)
 		{
-			printf("±âº» °ø°İ!\n");
+			printf("ê¸°ë³¸ ê³µê²©!\n");
 		}
 		else
 		{
-			int weaponIndex = Choice - 2; // 2¹øºÎÅÍ ¹«±âµé
+			int weaponIndex = Choice - 2; // 2ë²ˆë¶€í„° ë¬´ê¸°ë“¤
 			if (weaponIndex >= 0 && weaponIndex < (int)Choices.size())
 			{
 				WeaponType selected = Choices[weaponIndex];
@@ -327,20 +367,20 @@ void GameManager::MeetEnemy_BattleEvent(Player& player, Enemy* pEnemy)
 				switch (selected)
 				{
 				case WeaponType::Fire:
-					printf("Fire ¹«±â·Î °ø°İ!\n");
+					printf("Fire ë¬´ê¸°ë¡œ ê³µê²©!\n");
 					break;
 				case WeaponType::EMP:
-					printf("EMP ¹«±â·Î °ø°İ!\n");
+					printf("EMP ë¬´ê¸°ë¡œ ê³µê²©!\n");
 					break;
 				case WeaponType::Hit:
-					printf("Hit ¹«±â·Î °ø°İ!\n");
+					printf("Hit ë¬´ê¸°ë¡œ ê³µê²©!\n");
 					break;
 				}
 				Damage = CalculateWeaponDamage(player, *pEnemy, selected);
 			}
 			else
 			{
-				printf("Àß¸øµÈ ¼±ÅÃÀÔ´Ï´Ù. ±âº» °ø°İÀ¸·Î ÁøÇàÇÕ´Ï´Ù.\n");
+				printf("ì˜ëª»ëœ ì„ íƒì…ë‹ˆë‹¤. ê¸°ë³¸ ê³µê²©ìœ¼ë¡œ ì§„í–‰í•©ë‹ˆë‹¤.\n");
 			}
 		}
 
@@ -348,15 +388,15 @@ void GameManager::MeetEnemy_BattleEvent(Player& player, Enemy* pEnemy)
 
 		if (!pEnemy->IsAlive())
 		{
-			printf("»ó´ë¸¦ ¹°¸®ÃÆ½À´Ï´Ù!\n");
+			printf("ìƒëŒ€ë¥¼ ë¬¼ë¦¬ì³¤ìŠµë‹ˆë‹¤!\n");
 			break;
 		}
 
-		// --- Àû ÅÏ ---
+		// --- ì  í„´ ---
 		pEnemy->ApplyAttack(&player);
 		if (!player.IsAlive())
 		{
-			printf("»ó´ë¿¡°Ô ÆĞ¹èÇÏ¿´½À´Ï´Ù...\n");
+			printf("ìƒëŒ€ì—ê²Œ íŒ¨ë°°í•˜ì˜€ìŠµë‹ˆë‹¤...\n");
 		}
 	}
 }
@@ -367,15 +407,15 @@ int GameManager::CalculateWeaponDamage(Player& player, Enemy& enemy, WeaponType 
 
 	if (weapon == enemy.GetWeakType())
 	{
-		return BaseAttack * 2; // ÀûÀÌ ¾àÇÑ ¹«±â ¡æ µ¥¹ÌÁö 2¹è
+		return BaseAttack * 2; // ì ì´ ì•½í•œ ë¬´ê¸° â†’ ë°ë¯¸ì§€ 2ë°°
 	}
 	else if (weapon == enemy.GetStrongType())
 	{
-		return BaseAttack / 2; // ÀûÀÌ °­ÇÑ ¹«±â ¡æ µ¥¹ÌÁö Àı¹İ
+		return BaseAttack / 2; // ì ì´ ê°•í•œ ë¬´ê¸° â†’ ë°ë¯¸ì§€ ì ˆë°˜
 	}
 	else
 	{
-		return BaseAttack;     // º¸Åë »ó¼º ¡æ ±×´ë·Î
+		return BaseAttack;     // ë³´í†µ ìƒì„± â†’ ê·¸ëŒ€ë¡œ
 	}
 }
 

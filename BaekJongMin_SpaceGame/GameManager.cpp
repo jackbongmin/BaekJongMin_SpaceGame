@@ -2,6 +2,8 @@
 #include <fstream>
 #include <random>
 #include <Windows.h>
+#include<vector>
+#include<set>
 
 #include "GameManager.h"
 #include "Actor.h"
@@ -14,24 +16,87 @@
 
 void GameManager::MainRoot()
 {
-	int Day = 1;
-	const int Day_End = 11;
-
-	while (Day != Day_End)
+	while (Day < Day_End)
 	{
+		printf("\n===== Day %d =====\n", Day);
+		ActionPoint = MaxActionPoint;
+		DoExplore = DoRest = DoResearch = false;
 
+		DailyAction();
+
+		Day++;
 	}
+	printf("게임 종료! 10일이 지났습니다.\n");
 }
 
 void GameManager::DailyAction()
 {
-	int ActionPoint = 2;
-	const int MaxActionPoint = 2;
-	if (ActionPoint > MaxActionPoint)
-	{
-		ActionPoint == MaxActionPoint;
-	}
+	bool EndDay = false;
 
+	while (ActionPoint > 0 && !EndDay)
+	{
+
+		printf("AP: %d\n", ActionPoint);
+		printf("무엇을 하시겠습니까?\n");
+		printf("[1.탐험 2.휴식 3.연구]\n");
+
+		int MaxChoice = 3;
+
+		if (ActionPoint < MaxActionPoint)
+		{
+			MaxChoice = 4;
+		}
+
+		int Choice = 0;
+		std::cin >> Choice;
+
+		if (Choice < 1 || Choice > MaxChoice)
+		{
+			printf("잘못입력하셨습니다. 다시 입력하시오.\n");
+			continue;
+		}
+		switch (Choice)
+		{
+		case 1:
+			if (!DoExplore) 
+			{ 
+				Explore(); 
+				ActionPoint--; 
+				DoExplore = true; 
+			}
+			else
+			{
+				printf("오늘은 이미 탐험했습니다!\n");
+			}
+			break;
+		case 2:
+			if (!DoRest)
+			{ 
+				Rest(); ActionPoint--; DoRest = true; 
+			}
+			else
+			{
+				printf("오늘은 이미 휴식했습니다!\n");
+			}
+			break;
+		case 3:
+			if (!DoResearch) 
+			{
+				Research(); ActionPoint--; 
+				DoResearch = true; 
+			}
+			else
+			{
+				printf("오늘은 이미 연구했습니다!\n");
+			}
+			break;
+		case 4:
+			printf("다음 날로 넘어갑니다.\n");
+			return;
+		}
+
+		printf("행동력이 다 떨어졌습니다. 자동으로 다음 날로 넘어갑니다.\n");
+	}
 }
 
 void GameManager::Explore()
@@ -45,6 +110,52 @@ void GameManager::Rest()
 
 void GameManager::Research()
 {
+	printf("연구를 시작합니다.\n");
+
+	int i = rand() % 100;
+
+	if (player.WeaponCount() == 3)
+	{
+		if (i < 20)
+		{
+			printf("아무 일도 일어나지 않았다.");
+		}
+		else
+		{
+			player.ObtainAlienBook();
+		}
+		return;
+	}
+	if (i < 20)
+	{
+		printf("아무 일도 일어나지 않았다.");
+	}
+	else if (i < 60)
+	{
+		player.ObtainAlienBook();
+	}
+	else
+	{
+		std::vector<WeaponType> Available;
+
+		if (!player.HasWeapon(WeaponType::Fire))
+		{
+			Available.push_back(WeaponType::Fire);
+		}
+		if (!player.HasWeapon(WeaponType::EMP))
+		{
+			Available.push_back(WeaponType::EMP);
+		}
+		if (!player.HasWeapon(WeaponType::Hit))
+		{
+			Available.push_back(WeaponType::Hit);
+		}
+		if (!Available.empty())
+		{
+			int i = rand() % Available.size();
+			player.AddWeapon(Available[i]);
+		}
+	}
 }
 
 void GameManager::Explore_MeetEnemy()
@@ -103,36 +214,38 @@ void GameManager::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 		case 1: // 평화
 			if (dynamic_cast<JellyFish*>(pEnemy))
 			{
-				pEnemy->AddAffinity(+15);
+				player.IncreaseEnemyAffinity(*pEnemy, +15);
 			}
 			else if (dynamic_cast<Spider*>(pEnemy))
 			{
-				pEnemy->AddAffinity(-5);
-			}
-			else 
-			{ 
-				pEnemy->AddAffinity(-3);
-			}
-			break;
-		case 2: // 협상
-			if (dynamic_cast<Robot*>(pEnemy))
-			{
-				pEnemy->AddAffinity(+15);
-			}
-			else pEnemy->AddAffinity(+2);
-			break;
-		case 3: // 전쟁 ㄱㄱ
-			if (dynamic_cast<Spider*>(pEnemy))
-			{
-				pEnemy->AddAffinity(+15);
-			}
-			else if (dynamic_cast<JellyFish*>(pEnemy))
-			{
-				pEnemy->AddAffinity(-10);
+				player.IncreaseEnemyAffinity(*pEnemy, -5);
 			}
 			else
 			{
-				pEnemy->AddAffinity(+3);
+				player.IncreaseEnemyAffinity(*pEnemy, -3);
+			}
+			break;
+
+		case 2: // 협상
+			if (dynamic_cast<Robot*>(pEnemy))
+			{
+				player.IncreaseEnemyAffinity(*pEnemy, +15);
+			}
+			else player.IncreaseEnemyAffinity(*pEnemy, +2);
+			break;
+
+		case 3: // 전쟁 ㄱㄱ
+			if (dynamic_cast<Spider*>(pEnemy))
+			{
+				player.IncreaseEnemyAffinity(*pEnemy, +15);
+			}
+			else if (dynamic_cast<JellyFish*>(pEnemy))
+			{
+				player.IncreaseEnemyAffinity(*pEnemy, -10);
+			}
+			else
+			{
+				player.IncreaseEnemyAffinity(*pEnemy, +3);
 			}
 			break;
 		}
@@ -173,19 +286,113 @@ void GameManager::MeetEnemy_BattleEvent(Player& player, Enemy* pEnemy)
 
 	while (player.IsAlive() && pEnemy->IsAlive())
 	{
-		player.ApplyAttack(pEnemy);
+		printf("플레이어 턴입니다. 공격방식을 선택하세요.\n");
+		int Option = 1;
+		printf("%d.기본공격\n", Option++);
+
+		std::vector<WeaponType> Choices;
+
+		if (player.HasWeapon(WeaponType::Fire))
+		{
+			printf("%d. Fire 무기 공격\n", Option++);
+			Choices.push_back(WeaponType::Fire);
+		}
+		if (player.HasWeapon(WeaponType::EMP))
+		{
+			printf("%d. EMP 무기 공격\n", Option++);
+			Choices.push_back(WeaponType::EMP);
+		}
+		if (player.HasWeapon(WeaponType::Hit))
+		{
+			printf("%d. Hit 무기 공격\n", Option++);
+			Choices.push_back(WeaponType::Hit);
+		}
+
+		int Choice;
+		std::cin >> Choice;
+
+		int Damage = player.GetAttackPower();
+
+		if (Choice == 1)
+		{
+			printf("기본 공격!\n");
+		}
+		else
+		{
+			int weaponIndex = Choice - 2; // 2번부터 무기들
+			if (weaponIndex >= 0 && weaponIndex < (int)Choices.size())
+			{
+				WeaponType selected = Choices[weaponIndex];
+
+				switch (selected)
+				{
+				case WeaponType::Fire:
+					printf("Fire 무기로 공격!\n");
+					break;
+				case WeaponType::EMP:
+					printf("EMP 무기로 공격!\n");
+					break;
+				case WeaponType::Hit:
+					printf("Hit 무기로 공격!\n");
+					break;
+				}
+				Damage = CalculateWeaponDamage(player, *pEnemy, selected);
+			}
+			else
+			{
+				printf("잘못된 선택입니다. 기본 공격으로 진행합니다.\n");
+			}
+		}
+
+		pEnemy->TakeDamage(Damage);
+
 		if (!pEnemy->IsAlive())
 		{
-			printf("상대를 물리쳤습니다.\n");
+			printf("상대를 물리쳤습니다!\n");
 			break;
 		}
+
+		// --- 적 턴 ---
 		pEnemy->ApplyAttack(&player);
 		if (!player.IsAlive())
 		{
-			printf("상대에게 패배하였습니다.\n");
+			printf("상대에게 패배하였습니다...\n");
 		}
 	}
 
+
+
+		//player.ApplyAttack(pEnemy);
+		//if (!pEnemy->IsAlive())
+		//{
+		//	printf("상대를 물리쳤습니다.\n");
+		//	break;
+		//}
+		//pEnemy->ApplyAttack(&player);
+		//if (!player.IsAlive())
+		//{
+		//	printf("상대에게 패배하였습니다.\n");
+		//}
+	
+
+}
+
+int GameManager::CalculateWeaponDamage(Player& player, Enemy& enemy, WeaponType weapon)
+{
+	int BaseAttack = player.GetAttackPower();
+
+	if (weapon == enemy.GetWeakType())
+	{
+		return BaseAttack * 2; // 적이 약한 무기 → 데미지 2배
+	}
+	else if (weapon == enemy.GetStrongType())
+	{
+		return BaseAttack / 2; // 적이 강한 무기 → 데미지 절반
+	}
+	else
+	{
+		return BaseAttack;     // 보통 상성 → 그대로
+	}
 }
 
 

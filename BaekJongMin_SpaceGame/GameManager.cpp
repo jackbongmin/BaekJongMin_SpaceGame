@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <random>
+#include <Windows.h>
 
 #include "GameManager.h"
 #include "Actor.h"
@@ -48,6 +49,7 @@ void GameManager::Research()
 
 void GameManager::Explore_MeetEnemy()
 {
+	srand(time(0));
 	Enemy* pEnemy = nullptr;
 	int i = rand() % 3;
 	switch (i)
@@ -68,11 +70,11 @@ void GameManager::Explore_MeetEnemy()
 		break;
 	}
 	Meet meet;
-	if (pEnemy == new Spider)
+	if (dynamic_cast<Spider*>(pEnemy))
 	{
 		meet.MeetSpider();
 	}
-	else if (pEnemy == new JellyFish)
+	else if (dynamic_cast<JellyFish*>(pEnemy))
 	{
 		meet.MeetJellyFish();
 	}
@@ -137,23 +139,27 @@ void GameManager::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 		printf("현재 호감도: %d\n", pEnemy->GetAffinity());
 	}
 
-	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 대화 끝남
+	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 대화 끝남
 
 	int FinalAffinity = pEnemy->GetAffinity();
 	printf("\n최종 호감도: %d\n", FinalAffinity);
 
 	if (FinalAffinity < 50) 
 	{
+		Sleep(3000);
 		printf("%s가 적대적으로 변했습니다! 전투 돌입!\n", pEnemy->GetName().c_str());
 		MeetEnemy_BattleEvent(player, pEnemy);
+		Sleep(1000);
 	}
 	else if (FinalAffinity < 60) 
 	{
 		printf("%s는 경계하며 물러났습니다.\n", pEnemy->GetName().c_str());
+		Sleep(1000);
 	}
 	else 
 	{
 		printf("%s가 호감을 보였습니다! 보급품을 줍니다.\n", pEnemy->GetName().c_str());
+		Sleep(1000);
 		// 보급품 추가해야함 player에 자원 보급
 		// player.AddFood(1);
 		// player.AddOxygen(10);

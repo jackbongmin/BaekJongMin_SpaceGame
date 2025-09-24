@@ -2,9 +2,19 @@
 //
 
 #include <iostream>
+#include <Windows.h>
+#include "Meet.h"
+#include "GameManager.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    //Sleep(1000);
+    //Meet meet;
+    //meet.MeetRobot();
+    //meet.MeetSpider();
+    //meet.MeetJellyFish();
+
+    GameManager gm;
+    gm.Explore_MeetEnemy();
 }
 

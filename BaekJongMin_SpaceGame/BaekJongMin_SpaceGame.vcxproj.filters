@@ -13,10 +13,69 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="리소스 파일\객체">
+      <UniqueIdentifier>{db0bb776-fcc1-47de-a55d-e125fc4f0d93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="리소스 파일\객체\몬스터">
+      <UniqueIdentifier>{15d79f8b-b8dd-447c-a6af-72b1f17bc6d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaekJongMin_SpaceGame.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>리소스 파일\객체</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>리소스 파일\객체</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>리소스 파일\객체</Filter>
+    </ClCompile>
+    <ClCompile Include="Spider.cpp">
+      <Filter>리소스 파일\객체\몬스터</Filter>
+    </ClCompile>
+    <ClCompile Include="Robot.cpp">
+      <Filter>리소스 파일\객체\몬스터</Filter>
+    </ClCompile>
+    <ClCompile Include="JellyFish.cpp">
+      <Filter>리소스 파일\객체\몬스터</Filter>
+    </ClCompile>
+    <ClCompile Include="Meet.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>리소스 파일\객체</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>리소스 파일\객체</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>리소스 파일\객체</Filter>
+    </ClInclude>
+    <ClInclude Include="Spider.h">
+      <Filter>리소스 파일\객체\몬스터</Filter>
+    </ClInclude>
+    <ClInclude Include="Robot.h">
+      <Filter>리소스 파일\객체\몬스터</Filter>
+    </ClInclude>
+    <ClInclude Include="JellyFish.h">
+      <Filter>리소스 파일\객체\몬스터</Filter>
+    </ClInclude>
+    <ClInclude Include="ICanBattle.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Meet.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

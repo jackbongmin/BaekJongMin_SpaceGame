@@ -5,6 +5,7 @@
 #include <Windows.h>
 #include "Meet.h"
 #include "GameManager.h"
+#include <random>
 /*                         
                                                          ███╗   ██╗███████╗██╗  ██╗██████╗  █████╗  ██████╗███████╗    ██╗   ██╗███████╗
                                                          ████╗  ██║██╔════╝ ██╗██╗ ██╔══██╗██╔══██╗██╔════╝██╔════╝    ██║   ██║██╔════╝
@@ -16,6 +17,7 @@
 
 int main()
 {
+    srand(time(0));
     //Sleep(1000);
     //Meet meet;
     //meet.MeetRobot();

@@ -24,6 +24,8 @@ public:
 	int GetFood() const { return Food; }
 	int GetOxygen() const { return Oxygen; }
 	int GetMaxOxygen() const { return MaxOxygen; }
+	const int GetHungerPenalty() const { return HungerPenalty; }
+
 
 	void ObtainAlienBook();
 	void IncreaseEnemyAffinity(Enemy& enemy, int BaseValue);
@@ -37,13 +39,25 @@ public:
 
 	int WeaponCount() const { return (int)Weapons.size(); }
 
+	void IncreaseHighAffinityCount();
+	void IncreaseLowAffinityCount();
+
+	int GetHighAffinityCount() const { return HighAffinityCount; }
+	int GetLowAffinityCount() const { return LowAffinityCount; }
+
 private:
 	int Food = 5;
 	int Oxygen = 100;
-	const int HungerPenalty = 20; 
+	const int HungerPenalty = 30; 
 	const int MaxOxygen = 100;
 
 	int AlienBook = 0;
 
 	std::set<WeaponType> Weapons;
+
+	int HighAffinityCount = 0;
+	int LowAffinityCount = 0;
+
+
+
 };

@@ -126,7 +126,9 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="BaekJongMin_SpaceGame.cpp" />
+    <ClCompile Include="Ending.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Exploreclass.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="JellyFish.cpp" />
     <ClCompile Include="Meet.cpp" />
@@ -136,7 +138,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="Ending.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Exploreclass.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="ICanBattle.h" />
     <ClInclude Include="JellyFish.h" />

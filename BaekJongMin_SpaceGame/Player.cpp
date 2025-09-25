@@ -18,8 +18,8 @@ void Player::ConsumeFood()
     }
     else
     {
-        printf("식량이 부족합니다! 하루가 지나며 체력이 20 감소합니다.\n");
-        TakeDamage(HungerPenalty);
+        printf("차감될 식량이 없습니다.\n");
+        //TakeDamage(HungerPenalty);
     }
 
 }
@@ -67,6 +67,14 @@ void Player::IncreaseEnemyAffinity(Enemy& enemy, int BaseValue)
 
     enemy.AddAffinity(FinalValue);
 
+    if (enemy.GetAffinity() >= 70)
+    {
+        HighAffinityCount++;
+    }
+    else if (enemy.GetAffinity() <= 20)
+    {
+        LowAffinityCount++;
+    }
     //printf("%s의 호감도가 %d 만큼 증가했습니다. (현재: %d)\n",enemy.GetName().c_str(), FinalValue, enemy.GetAffinity());
 }
 
@@ -77,5 +85,15 @@ void Player::AddWeapon(WeaponType Weapon)
         Weapons.insert(Weapon);
         printf("새로운 무기를 획득했습니다! (현재 무기 수: %d)\n", (int)Weapons.size());
     }
+}
+
+void Player::IncreaseHighAffinityCount()
+{
+    HighAffinityCount++;
+}
+
+void Player::IncreaseLowAffinityCount()
+{
+    LowAffinityCount++;
 }
 

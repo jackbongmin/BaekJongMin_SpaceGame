@@ -3,6 +3,9 @@
 #include"Actor.h"
 #include"Player.h"
 #include"Enemy.h"
+#include"Exploreclass.h"
+#include"Ending.h"
+
 
 
 
@@ -16,15 +19,13 @@ public:
 	void Explore();
 	void Rest();
 	void Research();
-	void Explore_MeetEnemy();
-	void MeetEnemy_BattleEvent(Player& player, Enemy* pEnemy);
-	int CalculateWeaponDamage(Player& player, Enemy& enemy, WeaponType weapon);
-	void MeetEnemy_Communicate(Player& player, Enemy* pEnemy);
-	void Explore_Discovery();
-	void Explore_Accident();
+	void DeadCheck();
 
 private:
 	Player player;
+	Exploreclass explore;
+	Ending ending;
+
 	int Day = 1;
 	const int Day_End = 11;
 

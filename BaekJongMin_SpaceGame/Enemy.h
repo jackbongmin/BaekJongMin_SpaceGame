@@ -4,10 +4,10 @@
 class Enemy : public Actor
 {
 public:
-	Enemy()
-		:Actor("Àû", 40, 15) {}
-	Enemy(const char* InName)
-		:Actor(InName, 40, 15) {}
+	//Enemy()
+	//	:Actor("Àû", 40, 15) {}
+	//Enemy(const char* InName)
+	//	:Actor(InName, 40, 15) {}
 	Enemy(const char* InName, int InHealth, int InAttackPower, WeaponType Strong, WeaponType Weak)
 		: Actor(InName, InHealth, InAttackPower), StrongType(Strong), WeakType(Weak){}
 

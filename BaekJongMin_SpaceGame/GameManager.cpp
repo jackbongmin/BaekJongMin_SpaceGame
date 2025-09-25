@@ -1,4 +1,12 @@
-﻿#include <iostream>
+﻿/*
+														 ███╗   ██╗███████╗██╗  ██╗██████╗  █████╗  ██████╗███████╗    ██╗   ██╗███████╗
+														 ████╗  ██║██╔════╝ ██╗██╗ ██╔══██╗██╔══██╗██╔════╝██╔════╝    ██║   ██║██╔════╝
+														 ██╔██╗ ██║█████╗    ███║  ██████╔╝███████║██║     █████╗      ██║   ██║███████╗
+														 ██║╚██╗██║██╔══╝   ██═██║ ██╔═══╝ ██╔══██║██║     ██╔══╝      ██║   ██║ ╚═══██║
+														 ██║ ╚████║███████╗██║  ██║██║     ██║  ██║╚██████╗███████╗     ╚████╔╝ ███████║
+														 ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝ ╚═════╝╚══════╝      ╚═══╝  ╚══════╝
+*/
+#include <iostream>
 #include <fstream>
 #include <random>
 #include <Windows.h>
@@ -13,14 +21,6 @@
 #include "JellyFish.h"
 #include "Robot.h"
 #include "Meet.h"
-/*
-														 ███╗   ██╗███████╗██╗  ██╗██████╗  █████╗  ██████╗███████╗    ██╗   ██╗███████╗
-														 ████╗  ██║██╔════╝ ██╗██╗ ██╔══██╗██╔══██╗██╔════╝██╔════╝    ██║   ██║██╔════╝
-														 ██╔██╗ ██║█████╗    ███║  ██████╔╝███████║██║     █████╗      ██║   ██║███████╗
-														 ██║╚██╗██║██╔══╝   ██═██║ ██╔═══╝ ██╔══██║██║     ██╔══╝      ██║   ██║ ╚═══██║
-														 ██║ ╚████║███████╗██║  ██║██║     ██║  ██║╚██████╗███████╗     ╚████╔╝ ███████║
-														 ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝ ╚═════╝╚══════╝      ╚═══╝  ╚══════╝
-*/
 void GameManager::Intro()
 {
 	printf("\n                                                            /^\\                      \n");
@@ -51,22 +51,154 @@ void GameManager::Intro()
 	printf("| |\\  || |____   / . \\  | |     / ____ \\ | |___  | |____     | |__| |  ____) |    \n");
 	printf("|_| \\_||______| /_/ \\_\\ |_|    /_/    \\_\\ \\_____||______|     \\____/  |_____/ \n\n");
 	
-	printf("==============================================================================\n\n");
+	Meet meet;
+	meet.aaaaa();
+
 }
 
 void GameManager::MainRoot()
 {
 	while (Day < Day_End)
 	{
-		printf("\n===== Day %d =====\n", Day);
+		//printf("\n======= Day %d =======\n\n", Day);
+		Sleep(500);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf(" ");
+		Sleep(25);
+		printf("D");
+		Sleep(25);
+		printf("a");
+		Sleep(25);
+		printf("y");
+		Sleep(25);
+		printf(" ");
+		Sleep(25);
+		printf("%d", Day);
+		Sleep(25);
+		printf(" ");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=\n\n");
+		Sleep(25);
+
+		if (Day == 3 || Day == 6 || Day == 9)
+		{
+			Sleep(1000);
+			printf("\n※ %d일차 강제 이벤트 ※\n\n", Day);
+			Sleep(1000);
+
+			int i = rand() % 100;
+			if (i < 50)
+			{
+				printf("외계인이 찾아왔습니다.\n");
+				Explore_MeetEnemy();
+			}
+			else if (i < 75)
+			{
+				Explore_Discovery();
+			}
+			else
+			{
+				Explore_Accident();
+			}
+		}
+
+
 		ActionPoint = MaxActionPoint;
+
 		DoExplore = DoRest = DoResearch = false;
 
 		DailyAction();
 
 		Day++;
+		Sleep(500);
+		player.ConsumeFood();
+		Sleep(500);
+		player.ConsumeOxygen(15);
+		Sleep(500);
+		player.PlayerStat();
+
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=");
+		Sleep(25);
+		printf("=\n\n");
+		Sleep(25);
+		printf("       ");
+		Sleep(25);
+		printf("다");
+		Sleep(50);
+		printf("음");
+		Sleep(50);
+		printf("날\n\n");
+		Sleep(500);
+		//printf("\n=====================\n");
+		//printf("\n       다음날\n");
+
 	}
-	printf("게임 종료! 10일이 지났습니다.\n");
+	Sleep(2000);
+	printf("10일이 지났습니다.\n");
+	Sleep(2000);
 }
 
 void GameManager::DailyAction()
@@ -76,8 +208,8 @@ void GameManager::DailyAction()
 	while (ActionPoint > 0 && !EndDay)
 	{
 
-		printf("AP: %d\n", ActionPoint);
-		printf("무엇을 하시겠습니까?\n");
+		printf("무엇을 하시겠습니까?(AP : %d)\n", ActionPoint);
+		Sleep(500);
 		printf("[1.탐험 2.휴식 3.연구]\n");
 
 		int MaxChoice = 3;
@@ -89,6 +221,7 @@ void GameManager::DailyAction()
 
 		int Choice = 0;
 		std::cin >> Choice;
+		printf("\n");
 
 		if (Choice < 1 || Choice > MaxChoice)
 		{
@@ -135,22 +268,76 @@ void GameManager::DailyAction()
 			return;
 		}
 
-		printf("행동력이 다 떨어졌습니다. 자동으로 다음 날로 넘어갑니다.\n");
+		const int End_ActionPoint = 0;
+		if (ActionPoint == End_ActionPoint)
+		{
+			printf("행동력이 다 떨어졌습니다. 자동으로 다음 날로 넘어갑니다.\n");
+		}
 	}
 }
 
 void GameManager::Explore()
 {
+	printf("탐사를 시작합니다..\n");
+	Sleep(500);
+	printf(".");
+	Sleep(500);
+	printf(".");
+	Sleep(500);
+	printf(".");
+	Sleep(500);
+	printf(".\n");
+	Sleep(500);
 
+	int i = rand() % 3;
+	switch (i)
+	{
+	case 0 :
+		Explore_MeetEnemy();
+		break;
+	case 1 :
+		Explore_Discovery();
+		break;
+	case 2 :
+		Explore_Accident();
+		break;
+	}
+
+	
 }
 
 void GameManager::Rest()
 {
+	printf("휴식을 합니다..\n");
+	Sleep(500);
+	printf(".");
+	Sleep(500);
+	printf(".");
+	Sleep(500);
+	printf(".");
+	Sleep(500);
+	printf(".\n");
+	Sleep(500);
+
+	player.Heal(30);
+	player.ConsumeOxygen(5);
+	Sleep(500);
+	player.PlayerStat();
+
 }
 
 void GameManager::Research()
 {
 	printf("연구를 시작합니다.\n");
+	Sleep(500);
+	printf(".");
+	Sleep(500);
+	printf(".");
+	Sleep(500);
+	printf(".");
+	Sleep(500);
+	printf(".\n");
+	Sleep(500);
 
 	int i = rand() % 100;
 
@@ -158,7 +345,7 @@ void GameManager::Research()
 	{
 		if (i < 20)
 		{
-			printf("아무 일도 일어나지 않았다.");
+			printf("아무 일도 일어나지 않았다.\n");
 		}
 		else
 		{
@@ -168,7 +355,7 @@ void GameManager::Research()
 	}
 	if (i < 20)
 	{
-		printf("아무 일도 일어나지 않았다.");
+		printf("아무 일도 일어나지 않았다.\n");
 	}
 	else if (i < 60)
 	{
@@ -196,6 +383,10 @@ void GameManager::Research()
 			player.AddWeapon(Available[i]);
 		}
 	}
+	Sleep(300);
+	player.ConsumeOxygen(5);
+	Sleep(500);
+	player.PlayerStat();
 }
 
 void GameManager::Explore_MeetEnemy()
@@ -239,57 +430,151 @@ void GameManager::Explore_MeetEnemy()
 void GameManager::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 {
 	printf("%s와 대화를 시작합니다.\n", pEnemy->GetName().c_str());
+	Sleep(500);
 
 	for (int round = 1; round <= 3; round++) 
 	{
 		printf("\n[%d번째 대화]\n", round);
+		if (pEnemy->GetName() == "거미 외계인")
+		{
+			if (round == 1)
+			{
+				printf("거미 외계인 : Thrixel wev’no cresthun, spyr’eth glawnor.\n\n");
+			}
+			if (round == 2)
+			{
+				printf("거미 외계인 : Crr-sshh tanttt vorethin, arakn’dral sith.\n\n");
+			}
+			if (round == 3)
+			{
+				printf("거미 외계인 : Webrae ignor quessh, klith spun’dor.\n\n");
+			}
+			Sleep(500);
+		}
+		else if (pEnemy->GetName() == "해파리 외계인")
+		{
+			if (round == 1)
+			{
+				printf("해파리 외계인 : Lu~me~a d~rif~sh~oon, qu~ori~elth i~n slos~~hine.\n\n");
+			}
+			if (round == 2)
+			{
+				printf("해파리 외계인 : Gly~~ssha ve’loo~n mar~qual, jell~ith ph~~oor.\n\n");
+			}
+			if (round == 3)
+			{
+				printf("해파리 외계인 : Zoo~~nq~uash th~allu~me, o~rbiq~u~eth syla~a.\n\n");
+			}
+			Sleep(500);
+		}
+		else if (pEnemy->GetName() == "외계 로봇")
+		{
+			if (round == 1)
+			{
+				printf("외계 로봇 : SYS-404X: PROTOCOL_7Z INITIATED // 0110-EXA RUNMODE\n\n");
+			}
+			if (round == 2)
+			{
+				printf("외계 로봇 : CORE-99A:: VECTOR_OVERRIDE >> SIGNAL_001101 LOST\n\n");
+			}
+			if (round == 3)
+			{
+				printf("외계 로봇 : UNIT-77Z ENGAGE: ERROR-505 LOOP // REBOOT_12.3\n\n");
+			}
+			Sleep(500);
+		}
+		printf("");
 		printf("1. 평화롭게 이야기한다\n");
 		printf("2. 교역을 제안한다\n");
 		printf("3. 힘을 과시한다\n");
 
 		int choice;
+		printf("\n당신의 선택은? >> ");
 		std::cin >> choice;
 
 		switch (choice) {
 		case 1: // 평화
 			if (dynamic_cast<JellyFish*>(pEnemy))
 			{
+				printf("\n해파리 외계인 : Gly~~ssha\n");
+				Sleep(800);
+				printf("(호감도 +15)\n\n");
+				Sleep(800);
 				player.IncreaseEnemyAffinity(*pEnemy, +15);
 			}
 			else if (dynamic_cast<Spider*>(pEnemy))
 			{
+				printf("\n거미 외계인 : Crr-sshh..\n");
+				Sleep(800);
+				printf("(호감도 -5)\n\n");
+				Sleep(800);
 				player.IncreaseEnemyAffinity(*pEnemy, -5);
 			}
-			else
+			else if (dynamic_cast<Robot*>(pEnemy))
 			{
-				player.IncreaseEnemyAffinity(*pEnemy, -3);
+				printf("\n외계로봇 : A!AA@AAA_XA\n");
+				Sleep(800);
+				printf("(호감도 -7)\n\n");
+				Sleep(800);
+				player.IncreaseEnemyAffinity(*pEnemy, -7);
 			}
 			break;
 
 		case 2: // 협상
-			if (dynamic_cast<Robot*>(pEnemy))
+			if (dynamic_cast<JellyFish*>(pEnemy))
 			{
-				player.IncreaseEnemyAffinity(*pEnemy, +15);
+				printf("\n해파리 외계인 : f~sh~oon\n");
+				Sleep(800);
+				printf("(호감도 +5)\n\n");
+				Sleep(800);
+				player.IncreaseEnemyAffinity(*pEnemy, +5);
 			}
-			else player.IncreaseEnemyAffinity(*pEnemy, +2);
+			else if (dynamic_cast<Spider*>(pEnemy))
+			{
+				printf("\n거미 외계인 : spyr’ettttt!!!\n");
+				Sleep(800);
+				printf("(호감도 10)\n\n");
+				Sleep(800);
+				player.IncreaseEnemyAffinity(*pEnemy, +10);
+			}
+			else if (dynamic_cast<Robot*>(pEnemy))
+			{
+				printf("\n외계로봇 : 11101011 10000100 10010000 00100000 11101100 10100011 10111101 11101100 10011101 10110100 11101010 10110010 10100000 11101011 10001011 10100100\n");
+				Sleep(800);
+				printf("(호감도 -15)\n\n");
+				Sleep(800);
+				player.IncreaseEnemyAffinity(*pEnemy, -15);
+			}
 			break;
-
 		case 3: // 전쟁 ㄱㄱ
-			if (dynamic_cast<Spider*>(pEnemy))
+			if (dynamic_cast<JellyFish*>(pEnemy))
 			{
-				player.IncreaseEnemyAffinity(*pEnemy, +15);
+				printf("\n해파리 외계인 :th~allu~me\n");
+				Sleep(800);
+				printf("(호감도 -15)\n\n");
+				Sleep(800);
+				player.IncreaseEnemyAffinity(*pEnemy, -15);
 			}
-			else if (dynamic_cast<JellyFish*>(pEnemy))
+			else if (dynamic_cast<Spider*>(pEnemy))
 			{
+				printf("\n거미 외계인 : klith klith klith \n");
+				Sleep(800);
+				printf("(호감도 -10)\n\n");
+				Sleep(800);
 				player.IncreaseEnemyAffinity(*pEnemy, -10);
 			}
-			else
+			else if (dynamic_cast<Robot*>(pEnemy))
 			{
-				player.IncreaseEnemyAffinity(*pEnemy, +3);
+				printf("\n외계로봇 : ERROR-404 LOOP\n");
+				Sleep(800);
+				printf("(호감도 +5)\n\n");
+				Sleep(800);
+				player.IncreaseEnemyAffinity(*pEnemy, +5);
 			}
 			break;
 		}
 		printf("현재 호감도: %d\n", pEnemy->GetAffinity());
+		Sleep(700);
 	}
 
 	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 대화 끝남
@@ -307,22 +592,41 @@ void GameManager::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 	else if (FinalAffinity < 60) 
 	{
 		printf("%s는 경계하며 물러났습니다.\n", pEnemy->GetName().c_str());
+		Sleep(500);
+		player.PlayerStat();
 		Sleep(1000);
 	}
 	else 
 	{
-		printf("%s가 호감을 보였습니다! 보급품을 줍니다.\n", pEnemy->GetName().c_str());
+		printf("%s이 호감을 보였습니다!\n", pEnemy->GetName().c_str());
 		Sleep(1000);
-		// 보급품 추가해야함 player에 자원 보급
-		// player.AddFood(1);
-		// player.AddOxygen(10);
+		
+		int i = rand() % 3;
+		switch (i)
+		{
+		case 0:
+			printf("%s이 돌아갔습니다.\n", pEnemy->GetName().c_str());
+			break;
+		case 1:
+			printf("보급품을 줍니다!\n\n");
+			player.AddFood(1);
+			break;
+		case 2:
+			printf("보급품을 줍니다!\n\n");
+			player.AddOxygen(20);
+			break;
+		}
+
+		Sleep(1000);
+		player.PlayerStat();
+		Sleep(1000);
 	}
 }
 
 void GameManager::MeetEnemy_BattleEvent(Player& player, Enemy* pEnemy)
 {
 
-	printf("전투를 시작합니다.\n");
+	printf("전투를 시작합니다.\n\n");
 
 	while (player.IsAlive() && pEnemy->IsAlive())
 	{
@@ -359,7 +663,7 @@ void GameManager::MeetEnemy_BattleEvent(Player& player, Enemy* pEnemy)
 		}
 		else
 		{
-			int weaponIndex = Choice - 2; // 2번부터 무기들
+			int weaponIndex = Choice - 2;
 			if (weaponIndex >= 0 && weaponIndex < (int)Choices.size())
 			{
 				WeaponType selected = Choices[weaponIndex];
@@ -392,7 +696,7 @@ void GameManager::MeetEnemy_BattleEvent(Player& player, Enemy* pEnemy)
 			break;
 		}
 
-		// --- 적 턴 ---
+		
 		pEnemy->ApplyAttack(&player);
 		if (!player.IsAlive())
 		{
@@ -407,23 +711,77 @@ int GameManager::CalculateWeaponDamage(Player& player, Enemy& enemy, WeaponType 
 
 	if (weapon == enemy.GetWeakType())
 	{
-		return BaseAttack * 2; // 적이 약한 무기 → 데미지 2배
+		return BaseAttack * 2;
 	}
 	else if (weapon == enemy.GetStrongType())
 	{
-		return BaseAttack / 2; // 적이 강한 무기 → 데미지 절반
+		return BaseAttack / 2;
 	}
 	else
 	{
-		return BaseAttack;     // 보통 상성 → 그대로
+		return BaseAttack;
 	}
 }
 
 
 void GameManager::Explore_Discovery()
 {
+	Meet meet;
+	meet.MeetDiscovery();
+	printf("자원을 발견했습니다.\n\n");
+	Sleep(1000);
+	int i = rand() % 100;
+	
+	if (i < 30)
+	{
+		printf("식량을 1개 발견했습니다.\n");
+		player.AddFood(1);
+	}
+	else if (i < 60)
+	{
+		printf("산소통을 1개 발견했습니다. 산소가 50% 상승됩니다.\n");
+		player.AddOxygen(50);
+	}
+	else if (i < 80)
+	{
+		printf("식량을 2개 발견했습니다.\n");
+		player.AddFood(2);
+	}
+	else
+	{
+		printf("외계인 도감을 발견했습니다.\n");
+		player.ObtainAlienBook();
+	}
+	Sleep(500);
+	player.PlayerStat();
+	Sleep(500);
 }
 
 void GameManager::Explore_Accident()
 {
+	Meet meet;
+	meet.MeetAccident();
+	printf("사고를 당했습니다.\n");
+	Sleep(1000);
+
+	int i = rand() % 100;
+
+	if (i < 34)
+	{
+		printf("식량을 잃었습니다.\n");
+		player.ConsumeFood();
+	}
+	else if (i < 67)
+	{
+		printf("산소를 잃었습니다.\n");
+		player.ConsumeOxygen(20);
+	}
+	else
+	{
+		printf("데미지를 입었습니다.\n");
+		player.TakeDamage(20);
+	}
+	Sleep(500);
+	player.PlayerStat();
+	Sleep(500);
 }

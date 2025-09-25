@@ -14,6 +14,8 @@ public:
 	Player(const char* InName, int InHealth, int InAttackPower, int InFood = 5, int InOxygen = 100)
 		:Actor(InName, InHealth, InAttackPower), Food(InFood), Oxygen(InOxygen) {}
 
+	void PlayerStat();
+
 	void ConsumeFood();
 	void ConsumeOxygen(int Amount);
 	void AddFood(int Amount);
@@ -21,7 +23,7 @@ public:
 
 	int GetFood() const { return Food; }
 	int GetOxygen() const { return Oxygen; }
-
+	int GetMaxOxygen() const { return MaxOxygen; }
 
 	void ObtainAlienBook();
 	void IncreaseEnemyAffinity(Enemy& enemy, int BaseValue);
@@ -39,6 +41,7 @@ private:
 	int Food = 5;
 	int Oxygen = 100;
 	const int HungerPenalty = 20; 
+	const int MaxOxygen = 100;
 
 	int AlienBook = 0;
 

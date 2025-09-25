@@ -7,6 +7,6 @@ public:
 
 	virtual void ApplyAttack(ICanBattle* InTarget) = 0;
 	virtual void TakeDamage(int InDamage) = 0;
-
+	virtual void Heal(int InHeal) = 0;
 
 };

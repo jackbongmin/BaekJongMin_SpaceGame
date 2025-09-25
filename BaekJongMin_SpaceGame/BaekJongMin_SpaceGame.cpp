@@ -23,6 +23,13 @@ int main()
     //meet.MeetJellyFish();
 
     GameManager gm;
-    gm.Intro();
+    //gm.Intro();
+    gm.MainRoot();
+   // gm.Explore_MeetEnemy();
+   //
+
+    /*Meet meet;
+    meet.MeetDiscovery();
+    meet.MeetAccident();*/
 }
 

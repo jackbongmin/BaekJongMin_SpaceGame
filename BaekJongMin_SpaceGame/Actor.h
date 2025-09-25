@@ -13,6 +13,7 @@ public:
 
 	virtual void ApplyAttack(ICanBattle* InTarget) override;
 	virtual void TakeDamage(int InDamage) override;
+	virtual void Heal(int InHeal) override;
 
 	inline bool IsAlive() { return Health > 0; }
 

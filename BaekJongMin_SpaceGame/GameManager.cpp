@@ -23,92 +23,22 @@
 #include "Meet.h"
 #include "Exploreclass.h"
 #include "Ending.h"
+#include "IIIntro.h"
 
-void GameManager::Intro()
+
+void GameManager::Intro_2()
 {
-	printf("\n                                                            /^\\                      \n");
-	printf("                                                           /   \\                     \n");
-	printf("                                                          /  o  \\                    \n");
-	printf("                                                         /   o   \\                   \n");
-	printf("                                                        /    o    \\                  \n");
-	printf("                                                       |-_________-|                  \n");
-	printf("                                                       |           |                  \n");
-	printf("                      __                               |   __      |                  \n");
-	printf("                     (__)                             /|  [  ]     |\\                \n");
-	printf("                      ||                             / |  [  ]     | \\               \n");
-	printf("                   .------.                         /__|  [__]     |__\\              \n");
-	printf("                .-'        `-.                          \\         /                  \n");
-	printf("              .'_     _     _ `.                         \\       /                   \n");
-	printf("             / [_]   [ ]   [_] \\                         /=======\\                   \n");
-	printf("          __|  [_]   [_]   [_]  |__                     /=========\\                  \n");
-	printf("        /    \\                 /     \\                 /===========\\                 \n");
-	printf("       I      `. ._________. .'       I                  ||  ||  ||                   \n");
-	printf("       \\                             /                   VV  VV  VV                   \n");
-	printf("        '-'-----------------------'-'                   vvv  vv  vvv                  \n");
-	printf("           I_I       I_I       I_I                     vvvv  vv  vvvv                 \n\n");
-
-	printf(" _   _  ______  __   __  _____             _____  ______      _    _    _____        \n");
-	printf("| \\ | ||  ____| \\ \\ / / |  __ \\    /\\     / ____||  ____|    | |  | |  / ____|  \n");
-	printf("|  \\| || |__     \\ V /  | |__) |  /  \\   | |     | |__       | |  | | | (___      \n");
-	printf("| . ` ||  __|     > <   | |___/  / /\\ \\  | |     |  __|      | |  | |  \\___ \\    \n");
-	printf("| |\\  || |____   / . \\  | |     / ____ \\ | |___  | |____     | |__| |  ____) |    \n");
-	printf("|_| \\_||______| /_/ \\_\\ |_|    /_/    \\_\\ \\_____||______|     \\____/  |_____/ \n\n");
-	
-	Meet meet;
-	meet.aaaaa();
-
+	Sleep(1000);
+	printf("\n안녕하세요, %s씨.\n\n", player.GetName().c_str());
 }
+
 
 void GameManager::MainRoot()
 {
-	DeadCheck();
 	while (Day < Day_End)
 	{
-		DeadCheck();
 		//printf("\n======= Day %d =======\n\n", Day);
-		Sleep(500);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf(" ");
-		Sleep(25);
-		printf("D");
-		Sleep(25);
-		printf("a");
-		Sleep(25);
-		printf("y");
-		Sleep(25);
-		printf(" ");
-		Sleep(25);
-		printf("%d", Day);
-		Sleep(25);
-		printf(" ");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=\n\n");
-		Sleep(25);
+		intro.ReportDay(Day);
 
 		if (Day == 3 || Day == 6 || Day == 9)
 		{
@@ -152,7 +82,7 @@ void GameManager::MainRoot()
 		Sleep(1000);
 		player.ConsumeFood();
 		Sleep(1000);
-		player.ConsumeOxygen(15);
+		player.ConsumeOxygen(10);
 
 		Sleep(1000);
 		player.PlayerStat();
@@ -161,60 +91,10 @@ void GameManager::MainRoot()
 
 		if (Day < 11)
 		{
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=");
-		Sleep(25);
-		printf("=\n\n");
-		Sleep(25);
-		printf("       ");
-		Sleep(25);
-		printf("다");
-		Sleep(50);
-		printf("음");
-		Sleep(50);
-		printf("날\n\n");
-		Sleep(500);
-		}
 		//printf("\n=====================\n");
 		//printf("\n       다음날\n");
-
+			intro.ReportNextDay();
+		}
 	}
 	Sleep(2000);
 	printf("10일이 지났습니다.\n");
@@ -235,7 +115,7 @@ void GameManager::DailyAction()
 
 		printf("무엇을 하시겠습니까?(AP : %d)\n", ActionPoint);
 		Sleep(500);
-		printf("[1.탐험 2.휴식 3.연구]\n");
+		printf("[1.탐사 2.휴식 3.연구]\n");
 
 		int MaxChoice = 3;
 
@@ -432,6 +312,39 @@ void GameManager::DeadCheck()
 	}
 }
 
+//void GameManager::Intro()
+//{
+//	printf("\n                                                            /^\\                      \n");
+//	printf("                                                           /   \\                     \n");
+//	printf("                                                          /  o  \\                    \n");
+//	printf("                                                         /   o   \\                   \n");
+//	printf("                                                        /    o    \\                  \n");
+//	printf("                                                       |-_________-|                  \n");
+//	printf("                                                       |           |                  \n");
+//	printf("                      __                               |   __      |                  \n");
+//	printf("                     (__)                             /|  [  ]     |\\                \n");
+//	printf("                      ||                             / |  [  ]     | \\               \n");
+//	printf("                   .------.                         /__|  [__]     |__\\              \n");
+//	printf("                .-'        `-.                          \\         /                  \n");
+//	printf("              .'_     _     _ `.                         \\       /                   \n");
+//	printf("             / [_]   [ ]   [_] \\                         /=======\\                   \n");
+//	printf("          __|  [_]   [_]   [_]  |__                     /=========\\                  \n");
+//	printf("        /    \\                 /     \\                 /===========\\                 \n");
+//	printf("       I      `. ._________. .'       I                  ||  ||  ||                   \n");
+//	printf("       \\                             /                   VV  VV  VV                   \n");
+//	printf("        '-'-----------------------'-'                   vvv  vv  vvv                  \n");
+//	printf("           I_I       I_I       I_I                     vvvv  vv  vvvv                 \n\n");
+//
+//	printf(" _   _  ______  __   __  _____             _____  ______      _    _    _____        \n");
+//	printf("| \\ | ||  ____| \\ \\ / / |  __ \\    /\\     / ____||  ____|    | |  | |  / ____|  \n");
+//	printf("|  \\| || |__     \\ V /  | |__) |  /  \\   | |     | |__       | |  | | | (___      \n");
+//	printf("| . ` ||  __|     > <   | |___/  / /\\ \\  | |     |  __|      | |  | |  \\___ \\    \n");
+//	printf("| |\\  || |____   / . \\  | |     / ____ \\ | |___  | |____     | |__| |  ____) |    \n");
+//	printf("|_| \\_||______| /_/ \\_\\ |_|    /_/    \\_\\ \\_____||______|     \\____/  |_____/ \n\n");
+//	
+//	Meet meet;
+//	meet.aaaaa();
+//}
 //void GameManager::Explore_MeetEnemy()
 //{
 //	srand(time(0));

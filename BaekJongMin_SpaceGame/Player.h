@@ -48,7 +48,7 @@ public:
 private:
 	int Food = 5;
 	int Oxygen = 100;
-	const int HungerPenalty = 30; 
+	const int HungerPenalty = 40; 
 	const int MaxOxygen = 100;
 
 	int AlienBook = 0;

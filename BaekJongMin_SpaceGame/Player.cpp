@@ -1,12 +1,14 @@
+#include <Windows.h>
 #include "Player.h"
 
 void Player::PlayerStat()
 {
-    printf("\n===플레이어===\n");
-    printf("체력 : %d/%d\n", GetHealth(), GetMaxHealth());
-    printf("산소 : %d%%\n", GetOxygen(), GetMaxOxygen());
-    printf("식량 : %d\n", GetFood());
-    printf("==============\n\n");
+    Sleep(1000);
+    printf("\n==[%s]==========\n", GetName().c_str());
+    printf("└ 체력 : %d/%d \n", GetHealth(), GetMaxHealth());
+    printf("└ 산소 : %d%%  \n", GetOxygen(), GetMaxOxygen());
+    printf("└ 식량 : %d    \n\n", GetFood());
+    //printf("====================\n\n");
 }
 
 void Player::ConsumeFood()
@@ -14,7 +16,7 @@ void Player::ConsumeFood()
     if (Food > 0)
     {
         Food--;
-        printf("%s가 식량을 1 소비했습니다.\n", GetName().c_str());
+        printf("%s의 식량 1개가 줄었습니다.\n", GetName().c_str());
     }
     else
     {
@@ -50,8 +52,9 @@ void Player::AddOxygen(int Amount)
 
 void Player::ObtainAlienBook()
 {
-    AlienBook = true;
-    printf("외계인 도감을 획득했습니다! 앞으로 호감도를 10%% 더 얻습니다.\n");
+    //AlienBook = true;
+    AlienBook++;
+    printf("외계인 도감을 획득했습니다! 앞으로 호감도를 6을 더 얻습니다.\n");
 }
 
 void Player::IncreaseEnemyAffinity(Enemy& enemy, int BaseValue)
@@ -61,8 +64,9 @@ void Player::IncreaseEnemyAffinity(Enemy& enemy, int BaseValue)
     
     if (BaseValue > 0 && AlienBook > 0)
     {
-        int Bonus = 10 * AlienBook;
+        int Bonus = 6 * AlienBook;
         FinalValue += Bonus;
+        printf("(외계인 도감 %d개 보유, 추가 호감도 +%d)\n", AlienBook, Bonus);
     }
 
     enemy.AddAffinity(FinalValue);

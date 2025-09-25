@@ -32,7 +32,9 @@ void Exploreclass::Explore_MeetEnemy(Player& player)
 	default:
 		break;
 	}
+	Sleep(1000);
 	Meet meet;
+
 	if (dynamic_cast<Spider*>(pEnemy))
 	{
 		meet.MeetSpider();
@@ -45,12 +47,13 @@ void Exploreclass::Explore_MeetEnemy(Player& player)
 	{
 		meet.MeetRobot();
 	}
+	Sleep(1000);
 	MeetEnemy_Communicate(player, pEnemy);
 }
 
 void Exploreclass::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 {
-	printf("%s와 대화를 시작합니다.\n", pEnemy->GetName().c_str());
+	printf("%s(과)와 대화를 시작합니다.\n", pEnemy->GetName().c_str());
 	Sleep(500);
 
 	for (int round = 1; round <= 3; round++)
@@ -135,9 +138,9 @@ void Exploreclass::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 			{
 				printf("\n외계로봇 : A!AA@AAA_XA\n");
 				Sleep(1000);
-				printf("(호감도 -7)\n\n");
+				printf("(호감도 -11)\n\n");
 				Sleep(1000);
-				player.IncreaseEnemyAffinity(*pEnemy, -7);
+				player.IncreaseEnemyAffinity(*pEnemy, -11);
 			}
 			break;
 
@@ -180,17 +183,17 @@ void Exploreclass::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 			{
 				printf("\n거미 외계인 : klith klith klith \n");
 				Sleep(1000);
-				printf("(호감도 -10)\n\n");
+				printf("(호감도 -11)\n\n");
 				Sleep(1000);
-				player.IncreaseEnemyAffinity(*pEnemy, -10);
+				player.IncreaseEnemyAffinity(*pEnemy, -11);
 			}
 			else if (dynamic_cast<Robot*>(pEnemy))
 			{
 				printf("\n외계로봇 : ERROR-404 LOOP\n");
 				Sleep(1000);
-				printf("(호감도 +5)\n\n");
+				printf("(호감도 +10)\n\n");
 				Sleep(1000);
-				player.IncreaseEnemyAffinity(*pEnemy, +5);
+				player.IncreaseEnemyAffinity(*pEnemy, +10);
 			}
 			break;
 		}
@@ -206,7 +209,7 @@ void Exploreclass::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 	if (FinalAffinity < 50)
 	{
 		Sleep(2000);
-		printf("%s가 적대적으로 변했습니다! 전투 돌입!\n", pEnemy->GetName().c_str());
+		printf("%s이 적대적으로 변했습니다! 전투 돌입!\n", pEnemy->GetName().c_str());
 		Sleep(2000);
 		MeetEnemy_BattleEvent(player, pEnemy);
 	}
@@ -315,7 +318,21 @@ void Exploreclass::MeetEnemy_BattleEvent(Player& player, Enemy* pEnemy)
 
 		if (!pEnemy->IsAlive())
 		{
-			printf("상대를 물리쳤습니다!\n\n");
+			
+			int i = rand() % 3;
+			switch (i)
+			{
+			case 0:
+				break;
+			case 1:
+				printf("보급품을 줍니다!\n");
+				player.AddFood(1);
+				break;
+			case 2:
+				printf("보급품을 줍니다!\n");
+				player.AddOxygen(20);
+				break;
+			}
 			break;
 		}
 
@@ -401,7 +418,7 @@ void Exploreclass::Explore_Accident(Player& player)
 	else if (i < 67)
 	{
 		printf("산소를 잃었습니다.\n");
-		player.ConsumeOxygen(15);
+		player.ConsumeOxygen(10);
 	}
 	else
 	{

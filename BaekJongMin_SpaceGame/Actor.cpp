@@ -1,11 +1,13 @@
 #include "Actor.h"
 #include <Windows.h>
 
+// 전투시 공격
 void Actor::ApplyAttack(ICanBattle* InTarget)
 {
 	InTarget->TakeDamage(AttackPower);
 }
 
+// 해당객체에게 데미지 입력
 void Actor::TakeDamage(int InDamage)
 {
 	SetHealth(Health - InDamage);
@@ -21,6 +23,7 @@ void Actor::TakeDamage(int InDamage)
 	}
 }
 
+// 해당객체에게 체력 회복
 void Actor::Heal(int InHeal)
 {
 	SetHealth(Health + InHeal);

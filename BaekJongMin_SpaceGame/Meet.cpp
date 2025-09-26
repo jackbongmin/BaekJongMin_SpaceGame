@@ -2,6 +2,7 @@
 #include<iostream>
 #include <Windows.h>
 
+// 거미 외계인 만남
 void Meet::MeetSpider()
 {
 	printf("\n");
@@ -13,6 +14,7 @@ void Meet::MeetSpider()
 	printf(" [플레이어]          [거미 외계인]\n\n");
 }
 
+// 해파리 외계인 만남
 void Meet::MeetJellyFish()
 {
 	printf("\n");
@@ -24,6 +26,7 @@ void Meet::MeetJellyFish()
 	printf(" [플레이어]          [해파리 외계인]\n\n");
 }
 
+// 외계 로봇 만남
 void Meet::MeetRobot()
 {
 	printf("\n");
@@ -35,6 +38,7 @@ void Meet::MeetRobot()
 	printf(" [플레이어]           [외계 로봇]\n\n");
 }
 
+// 자원발견 이벤트
 void Meet::MeetDiscovery()
 {
 	printf("\n    *  .   *  .         \n");
@@ -46,6 +50,7 @@ void Meet::MeetDiscovery()
 
 }
 
+// 사고발생 이벤트
 void Meet::MeetAccident()
 {
 	printf("\n |||||  \n");
@@ -56,6 +61,7 @@ void Meet::MeetAccident()
 
 }
 
+// 경계선
 void Meet::aaaaa()
 {
 	printf("=");

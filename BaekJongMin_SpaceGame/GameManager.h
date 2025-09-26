@@ -18,8 +18,8 @@ public:
 	GameManager(const std::string& InPlayerName)
 		:player(InPlayerName.c_str(), 100, 15) {}
 
-	//void Intro();
-	void Intro_2();
+	Player& GetPlayer() { return player; }
+
 	void MainRoot();
 	void DailyAction();
 	void Explore();

@@ -11,7 +11,7 @@ class Player : public Actor
 {
 public:
 	Player() = default;
-	Player(const char* InName, int InHealth, int InAttackPower, int InFood = 5, int InOxygen = 100)
+	Player(const char* InName, int InHealth, int InAttackPower, int InFood = 6, int InOxygen = 100)
 		:Actor(InName, InHealth, InAttackPower), Food(InFood), Oxygen(InOxygen) {}
 
 	void PlayerStat();
@@ -24,8 +24,8 @@ public:
 	int GetFood() const { return Food; }
 	int GetOxygen() const { return Oxygen; }
 	int GetMaxOxygen() const { return MaxOxygen; }
+	int GetAlienBook() const { return AlienBook; }
 	const int GetHungerPenalty() const { return HungerPenalty; }
-
 
 	void ObtainAlienBook();
 	void IncreaseEnemyAffinity(Enemy& enemy, int BaseValue);
@@ -46,7 +46,7 @@ public:
 	int GetLowAffinityCount() const { return LowAffinityCount; }
 
 private:
-	int Food = 5;
+	int Food = 6;
 	int Oxygen = 100;
 	const int HungerPenalty = 40; 
 	const int MaxOxygen = 100;

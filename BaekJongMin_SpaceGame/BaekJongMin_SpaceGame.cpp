@@ -28,25 +28,12 @@ int main()
 
     std::string PlayerName;
     printf("\n당신의 이름은 무엇인가요?\n");
-    std::cin >> PlayerName;
+    std::getline(std::cin, PlayerName);
     
     GameManager gm(PlayerName);
-    gm.Intro_2();
     gm.MainRoot();
     //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
   
-    //Sleep(1000);
-    //Meet meet;
-    //meet.MeetRobot();
-    //meet.MeetSpider();
-    //meet.MeetJellyFish();
-    /*Exploreclass explore;
-    explore.Explore_MeetEnemy();*/
-   //
-
-    /*Meet meet;
-    meet.MeetDiscovery();
-    meet.MeetAccident();*/
     return 0;
 }
 

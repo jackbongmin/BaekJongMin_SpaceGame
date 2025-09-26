@@ -10,9 +10,9 @@
 #include "Robot.h"
 #include "Meet.h"
 
+// 탐사 및 강제이벤트에서 외계인 접촉시 발생
 void Exploreclass::Explore_MeetEnemy(Player& player)
 {
-	srand(time(0));
 	Enemy* pEnemy = nullptr;
 	int i = rand() % 3;
 	switch (i)
@@ -51,6 +51,7 @@ void Exploreclass::Explore_MeetEnemy(Player& player)
 	MeetEnemy_Communicate(player, pEnemy);
 }
 
+// 외계인 접촉 후 커뮤니케이션 실행
 void Exploreclass::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 {
 	printf("%s(과)와 대화를 시작합니다.\n", pEnemy->GetName().c_str());
@@ -113,16 +114,33 @@ void Exploreclass::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 		printf("3. 힘을 과시한다\n");
 
 		int choice;
-		printf("\n당신의 선택은? >> ");
-		std::cin >> choice;
+		while (true)
+		{
+			printf("\n당신의 선택은? >> ");
+			if (!(std::cin >> choice))
+			{
+				std::cin.clear();
+				std::cin.ignore(50, '\n');
+				printf("잘못입력하셨습니다. 다시 입력하세요.\n");
+				continue;
+			}
 
-		switch (choice) {
+			if (choice != 1 && choice != 2 && choice != 3 )
+			{
+				printf("잘못입력하셨습니다. 다시 입력하세요.\n");
+				continue;
+			}
+			break;
+		}
+
+		switch (choice)
+		{
 		case 1: // 평화
 			if (dynamic_cast<JellyFish*>(pEnemy))
 			{
 				printf("\n해파리 외계인 : Gly~~ssha\n");
 				Sleep(1000);
-				printf("(호감도 +15)\n\n");
+				printf("(호감도 +15)\n");
 				Sleep(1000);
 				player.IncreaseEnemyAffinity(*pEnemy, +15);
 			}
@@ -130,7 +148,7 @@ void Exploreclass::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 			{
 				printf("\n거미 외계인 : Crr-sshh..\n");
 				Sleep(1000);
-				printf("(호감도 -5)\n\n");
+				printf("(호감도 -5)\n");
 				Sleep(1000);
 				player.IncreaseEnemyAffinity(*pEnemy, -5);
 			}
@@ -138,7 +156,7 @@ void Exploreclass::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 			{
 				printf("\n외계로봇 : A!AA@AAA_XA\n");
 				Sleep(1000);
-				printf("(호감도 -11)\n\n");
+				printf("(호감도 -11)\n");
 				Sleep(1000);
 				player.IncreaseEnemyAffinity(*pEnemy, -11);
 			}
@@ -149,7 +167,7 @@ void Exploreclass::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 			{
 				printf("\n해파리 외계인 : f~sh~oon\n");
 				Sleep(1000);
-				printf("(호감도 +5)\n\n");
+				printf("(호감도 +5)\n");
 				Sleep(1000);
 				player.IncreaseEnemyAffinity(*pEnemy, +5);
 			}
@@ -157,7 +175,7 @@ void Exploreclass::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 			{
 				printf("\n거미 외계인 : spyr’ettttt!!!\n");
 				Sleep(1000);
-				printf("(호감도 +10)\n\n");
+				printf("(호감도 +10)\n");
 				Sleep(1000);
 				player.IncreaseEnemyAffinity(*pEnemy, +10);
 			}
@@ -165,7 +183,7 @@ void Exploreclass::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 			{
 				printf("\n외계로봇 : 11101011 10000100 10010000 00100000 11101100 10100011 10111101 11101100 10011101 10110100 11101010 10110010 10100000 11101011 10001011 10100100\n");
 				Sleep(1000);
-				printf("(호감도 -15)\n\n");
+				printf("(호감도 -15)\n");
 				Sleep(1000);
 				player.IncreaseEnemyAffinity(*pEnemy, -15);
 			}
@@ -175,7 +193,7 @@ void Exploreclass::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 			{
 				printf("\n해파리 외계인 :th~allu~me\n");
 				Sleep(1000);
-				printf("(호감도 -15)\n\n");
+				printf("(호감도 -15)\n");
 				Sleep(1000);
 				player.IncreaseEnemyAffinity(*pEnemy, -15);
 			}
@@ -183,7 +201,7 @@ void Exploreclass::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 			{
 				printf("\n거미 외계인 : klith klith klith \n");
 				Sleep(1000);
-				printf("(호감도 -11)\n\n");
+				printf("(호감도 -11)\n");
 				Sleep(1000);
 				player.IncreaseEnemyAffinity(*pEnemy, -11);
 			}
@@ -191,13 +209,13 @@ void Exploreclass::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 			{
 				printf("\n외계로봇 : ERROR-404 LOOP\n");
 				Sleep(1000);
-				printf("(호감도 +10)\n\n");
+				printf("(호감도 +10)\n");
 				Sleep(1000);
 				player.IncreaseEnemyAffinity(*pEnemy, +10);
 			}
 			break;
 		}
-		printf("현재 호감도: %d\n", pEnemy->GetAffinity());
+		printf("\n현재 호감도: %d\n", pEnemy->GetAffinity());
 		Sleep(700);
 	}
 
@@ -247,6 +265,7 @@ void Exploreclass::MeetEnemy_Communicate(Player& player, Enemy* pEnemy)
 	}
 }
 
+// 커뮤니케이션 이후 호감도 부족으로 인한 전투 발생
 void Exploreclass::MeetEnemy_BattleEvent(Player& player, Enemy* pEnemy)
 {
 
@@ -325,14 +344,21 @@ void Exploreclass::MeetEnemy_BattleEvent(Player& player, Enemy* pEnemy)
 			case 0:
 				break;
 			case 1:
-				printf("보급품을 줍니다!\n");
+				Sleep(1000);
+				printf("\n보급품을 줍니다!\n\n");
+				Sleep(1000);
 				player.AddFood(1);
 				break;
 			case 2:
-				printf("보급품을 줍니다!\n");
+				Sleep(1000);
+				printf("\n보급품을 줍니다!\n\n");
+				Sleep(1000);
 				player.AddOxygen(20);
 				break;
 			}
+			Sleep(1000);
+			player.PlayerStat();
+			Sleep(1000);
 			break;
 		}
 
@@ -346,6 +372,7 @@ void Exploreclass::MeetEnemy_BattleEvent(Player& player, Enemy* pEnemy)
 	}
 }
 
+// 전투이벤트 내 상성무기 포함 데미지 계산
 int Exploreclass::CalculateWeaponDamage(Player& player, Enemy& enemy, WeaponType weapon)
 {
 	int BaseAttack = player.GetAttackPower();
@@ -366,7 +393,7 @@ int Exploreclass::CalculateWeaponDamage(Player& player, Enemy& enemy, WeaponType
 	}
 }
 
-
+// 탐사 중 자원 발견
 void Exploreclass::Explore_Discovery(Player& player)
 {
 	Meet meet;
@@ -401,6 +428,7 @@ void Exploreclass::Explore_Discovery(Player& player)
 	Sleep(1000);
 }
 
+// 탐사 중 사고 발생
 void Exploreclass::Explore_Accident(Player& player)
 {
 	Meet meet;

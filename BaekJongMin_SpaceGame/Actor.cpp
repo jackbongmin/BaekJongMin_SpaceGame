@@ -13,7 +13,7 @@ void Actor::TakeDamage(int InDamage)
 	SetHealth(Health - InDamage);
 
 	printf("%s(이)가 %d의 피해를 입었습니다.\n", Name.c_str(), InDamage);
-	printf("(%d/%d)\n\n", Health, MaxHealth);
+	printf("%s HP : (%d/%d)\n\n", Name.c_str(), Health, MaxHealth);
 	Sleep(500);
 
 	if (!IsAlive())

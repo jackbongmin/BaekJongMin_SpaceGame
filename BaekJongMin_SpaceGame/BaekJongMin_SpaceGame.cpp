@@ -29,8 +29,9 @@ int main()
     std::string PlayerName;
     printf("\n당신의 이름은 무엇인가요?\n");
     std::getline(std::cin, PlayerName);
-    
     GameManager gm(PlayerName);
+    introstart.Intro_2(gm.GetPlayer());
+    
     gm.MainRoot();
     //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
   
